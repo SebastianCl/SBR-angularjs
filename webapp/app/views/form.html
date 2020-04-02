@@ -1,0 +1,47 @@
+<div class="wrapper fadeInDown" ng-init="vmForm.init()">
+    <div id="content" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+        <form class="form-group center-block">
+
+            <div ng-show="vmForm.loading" class="loaderMaster"></div>
+
+            <div class="form-group center-block fadeIn first">
+                <label>Clase de crédito</label>
+                <br><br>
+                <select id="creditRange" class="form-control" ng-model="vmForm.creditRange" required
+                    ng-options="item as item.type for item in vmForm.clases">
+                    <option selected disabled hidde value="">Seleccione una clase</option>
+                </select>
+            </div>
+
+            <div class="form-group center-block fadeIn second">
+                <label>Promedio de salario</label>
+                <br><br>
+                <input type="text" class="form-control" id="avgOrderValue" name="avgOrderValue"
+                    ng-model="vmForm.avgOrderValue" placeholder="$"
+                    ng-change="vmForm.validateNumbers(vmForm.avgOrderValue)">
+            </div>
+
+            <div class="fadeIn third">
+                <input type="submit" class="fadeIn fourth" value="Consultar" ng-click="vmForm.consult()">
+            </div>
+
+
+            <div class="fadeIn fourth">
+                <div>
+                    <label>{{vmForm.credit | currency}}</label>
+                </div>
+            </div>
+
+            <div class="fadeIn five">
+                <input type="submit" class="clear" value="Limpiar" ng-click="vmForm.clear()">
+            </div>
+
+            <div>
+                <label>{{vmForm.message}}</label>
+            </div>
+
+        </form>
+    </div>
+
+</div>
